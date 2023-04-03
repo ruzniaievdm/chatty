@@ -14,5 +14,5 @@ class Message(models.Model):
         return self.user.username
 
     @classmethod
-    def last_messages(cls, offset: int):
-        return cls.objects.order_by('-timestamp').all()[:offset]
+    def last_messages(cls, channel, offset: int):
+        return cls.objects.filter(channel=channel).order_by('-timestamp').all()[:offset]
