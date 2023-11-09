@@ -1,0 +1,278 @@
+[
+{
+  "model": "chat.message",
+  "pk": "042fa991-10a1-4670-990d-ea6def3f6276",
+  "fields": {
+    "conversation": "34367050-ab21-4f76-acad-4046f24d1973",
+    "from_user": 1,
+    "to_user": 3,
+    "content": "new",
+    "timestamp": "2023-10-26T08:48:29.310Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "0bdd215f-f2fb-4607-a4c5-19dc30bab3b3",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "аыв",
+    "timestamp": "2023-10-26T08:57:11.435Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "12e15b7a-fcf3-4ad2-93af-9cf068ef0971",
+  "fields": {
+    "conversation": "34367050-ab21-4f76-acad-4046f24d1973",
+    "from_user": 1,
+    "to_user": 3,
+    "content": "sdf",
+    "timestamp": "2023-10-26T08:47:49.989Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "1548e98c-3cd2-470d-b68e-4a9f549b9948",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "привіт",
+    "timestamp": "2023-10-26T10:11:02.381Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "1ee82302-0144-434b-9cbd-52dd0386618f",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 2,
+    "to_user": 1,
+    "content": "і тобі привіт",
+    "timestamp": "2023-10-26T10:11:09.229Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "23ef6623-d4be-49b2-bdcc-126c7f45b7db",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "f",
+    "timestamp": "2023-10-25T19:58:01.317Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "294f9587-d07f-49b4-b5d0-e62f5e74c581",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": " sdfgsdfg ",
+    "timestamp": "2023-10-25T20:00:01.302Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "3416e6fe-6ae8-4abb-a624-0df38ec044c1",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "а",
+    "timestamp": "2023-10-26T08:57:08.919Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "395b1d4a-7d4c-431e-b057-43e2d6ae1468",
+  "fields": {
+    "conversation": "34367050-ab21-4f76-acad-4046f24d1973",
+    "from_user": 1,
+    "to_user": 3,
+    "content": "sdf",
+    "timestamp": "2023-10-26T08:28:47.131Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "3dac3a3f-c33e-490d-82d1-9ca7075286b6",
+  "fields": {
+    "conversation": "34367050-ab21-4f76-acad-4046f24d1973",
+    "from_user": 1,
+    "to_user": 3,
+    "content": "sdf",
+    "timestamp": "2023-10-26T08:28:43.371Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "444af19c-8fce-4cdf-a21b-8d0fce21ea71",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "",
+    "timestamp": "2023-10-25T19:54:53.394Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "4775f2c6-a0bb-4ac2-8a20-954e8d1776d5",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "sdf",
+    "timestamp": "2023-10-25T19:54:44.974Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "71cdc1e9-4131-41f8-a0a6-ec66e30c73a8",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": " sff ",
+    "timestamp": "2023-10-25T20:00:02.885Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "822a2dc4-1758-400c-9cd5-03f643145a96",
+  "fields": {
+    "conversation": "34367050-ab21-4f76-acad-4046f24d1973",
+    "from_user": 1,
+    "to_user": 3,
+    "content": "hi",
+    "timestamp": "2023-10-26T08:44:25.733Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "9ad247fc-c769-49a9-a225-2e66640b96b2",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 2,
+    "to_user": 1,
+    "content": "hello",
+    "timestamp": "2023-10-26T08:52:51.833Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "cbdf9dbc-bdf2-4144-b397-ba9a4806f2f9",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "sdfasdf asdfa sdfasdf",
+    "timestamp": "2023-10-25T19:59:57.247Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "cfc23bfc-16cd-4baa-b1d5-df60587c59d3",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "hi",
+    "timestamp": "2023-10-26T10:10:16.451Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "d9fd26bd-17b7-46f5-bd86-2b4db86e28e5",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "sdfs dfg",
+    "timestamp": "2023-10-25T19:59:59.575Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "ea839a58-1c57-46b0-a491-3fdfbbc0adec",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 2,
+    "to_user": 1,
+    "content": "hi",
+    "timestamp": "2023-10-26T10:09:55.175Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "eaaa57aa-cffd-4b03-a94c-1437a7157bcf",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "sdfsdf",
+    "timestamp": "2023-10-25T19:54:37.604Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "ef849566-91a1-40ba-b02e-41e748565cd4",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "sdfgsdfgsdfg sdfgsdfg",
+    "timestamp": "2023-10-25T19:59:54.109Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "f893db94-de83-4e5e-98e2-226b0288bc56",
+  "fields": {
+    "conversation": "34367050-ab21-4f76-acad-4046f24d1973",
+    "from_user": 1,
+    "to_user": 3,
+    "content": "sdfsdf",
+    "timestamp": "2023-10-26T08:28:45.546Z",
+    "read": false
+  }
+},
+{
+  "model": "chat.message",
+  "pk": "fb09d7e8-b23c-4e5f-af81-b21c09695a29",
+  "fields": {
+    "conversation": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "from_user": 1,
+    "to_user": 2,
+    "content": "ff. f",
+    "timestamp": "2023-10-25T20:00:04.663Z",
+    "read": false
+  }
+}
+]

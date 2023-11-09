@@ -1,0 +1,26 @@
+[
+  {
+    "model": "chat.conversation",
+    "pk": "26c82efb-8cfe-45f6-82fd-74a0a40e7088",
+    "fields": {
+      "name": "john__root",
+      "online": []
+    }
+  },
+  {
+    "model": "chat.conversation",
+    "pk": "34367050-ab21-4f76-acad-4046f24d1973",
+    "fields": {
+      "name": "mark__root",
+      "online": []
+    }
+  },
+  {
+    "model": "chat.conversation",
+    "pk": "3933f25c-6432-42f5-8fb9-10eb5ba4061a",
+    "fields": {
+      "name": "john__mark",
+      "online": []
+    }
+  }
+]

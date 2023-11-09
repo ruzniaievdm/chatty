@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from os import environ
+from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -21,25 +21,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v1pky81bnn@g^f*(%qtczk%-y4+s0^h^p1&ph)n9g_ph5%hhc^'
+SECRET_KEY = environ.get('DJANGO_SECRET_KEY', 'django-insecure-secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = environ.get("DJANGO_DEBUG")
 
 # Application definition
 
 INSTALLED_APPS = [
-    'chat',
-    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third-party
+    'channels',
+    'corsheaders',
+    'rest_framework.authtoken',
+    # personal
+    'chat',
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
 
@@ -70,15 +74,19 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = "backend.asgi.application"
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': environ.get('DB_NAME', 'default'),
+        'USER': environ.get('DB_USER', 'postgres_user'),
+        'PASSWORD': environ.get('DB_PASSWORD', 'postgres_password'),
+        'HOST': environ.get('DB_HOST', 'db'),
+        'PORT': environ.get('DB_PORT', 5432),
     }
 }
 
@@ -130,6 +138,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Channels
 CHANNEL_LAYERS = {
     "default": {
-        'BACKEND': "channels.layers.InMemoryChannelLayer"
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [('redis', environ.get("REDIS_PORT"))],
+        },
     },
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+# os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = ['localhost']
+
+# CORS_ALLOWED_ORIGINS = [
+#     "https://localhost:3000"
+# ]
+
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
+
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+
+FIXTURE_DIRS = ['backend/fixtures/users.json']

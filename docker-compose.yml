@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      target: app-dev
+    container_name: chat-app
+    volumes:
+      - ./backend:/app/backend
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+
+  web:
+    build:
+      context: .
+      target: web-dev
+    container_name: chat-web
+    volumes:
+      - ./frontend:/app/frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - app
+    stdin_open: true
+    tty: true
+
+  redis:
+    container_name: chat-redis
+    restart: unless-stopped
+    image: redis:7.0.5-alpine
+    expose:
+      - 6379
+    volumes:
+      - "redis_data:/data"
+
+  db:
+    container_name: chat-db
+    image: postgres:15.1-alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # nginx:
+  #   container_name: chat-nginx
+  #   build: ./backend/services/nginx
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - app
+
+volumes:
+  pgdata:
+  redis_data:
+# networks:
+#     chat-network:
+#         driver: bridge
