@@ -29,10 +29,11 @@ RUN poetry config virtualenvs.create false && poetry install --no-interaction --
 
 # Web build
 FROM node:17-alpine AS web-builder
+
 FROM web-builder as web-dev
 WORKDIR /app/frontend
+
 COPY ./frontend/package*.json ./
+
 RUN npm install
-COPY ./frontend/ ./
-# EXPOSE 3000
 CMD npm start

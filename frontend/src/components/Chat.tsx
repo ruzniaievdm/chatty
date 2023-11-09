@@ -1,13 +1,11 @@
 import { useState, useContext, KeyboardEvent } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import { useParams } from "react-router-dom";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 import { AuthContext } from '../context/AuthContext';
 import { MessageModel } from "../models/Message";
 import { ConversationModel } from "../models/Conversation";
 import { Message } from "./Message";
-import { ChatLoader } from "./ChatLoader";
 
 export function Chat() {
   const { user } = useContext(AuthContext);
@@ -17,8 +15,6 @@ export function Chat() {
   const [message, setMessage] = useState("");
   const { conversationName } = useParams();
 
-  console.log(participants);
-  
   const { readyState, sendJsonMessage } = useWebSocket(user
     ? `ws://localhost:8000/ws/chat/${conversationName}`
     : null, {

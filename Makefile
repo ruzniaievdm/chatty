@@ -2,7 +2,8 @@ TARGET_ENV ?= dev
 
 bootstrap: \
 	up \
-	migrate
+	migrate \
+	load-fixtures
 
 up:
 	docker compose up -d --no-deps --remove-orphans
@@ -11,7 +12,9 @@ up:
 	docker-compose up -d $$(echo $* | tr + " ")
 
 load-fixtures:
-	docker compose run --rm app bash -c "./manage.py loaddata backend/fixtures/users.json"
+	docker compose run --rm app bash -c "./manage.py loaddata backend/fixtures/users.json \
+																														backend/fixtures/conversations.json \
+																														backend/fixtures/messages.json"
 
 restart:
 	docker-compose restart
@@ -67,6 +70,13 @@ app-test:
 
 app-lint:
 	docker-compose run --rm app-test bash -c "poetry run pylint backend"
+
+web-test:
+	docker-compose run --rm web-test sh -c "npm run test"
+
+test: \
+	web-test \
+	app-test
 
 ps:
 	for i in $$(docker container ls --format "{{.ID}}"); do \

@@ -15,6 +15,7 @@ gunicorn = "~21.2.0"
 django-environ = "~0.11.2"
 psycopg2-binary = "~2.9.8"
 djangorestframework = "^3.14.0"
+channels = "^4.0.0"
 
 [tool.poetry.group.test]
 optional = true
@@ -27,6 +28,9 @@ pylint-django = "^2.5.5"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+python_files = "test_*.py"
 
 [tool.pylint.MASTER]
 ignore = "migrations"

@@ -25,7 +25,6 @@ export interface AuthProps {
 export const AuthContext = createContext<AuthProps>(DefaultProps);
 
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  
   const navigate = useNavigate();
   const [user, setUser] = useState(() => AuthService.getCurrentUser());
 
