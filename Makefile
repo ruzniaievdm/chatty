@@ -1,13 +1,11 @@
-.PHONY: ps
+TARGET_ENV ?= dev
 
 bootstrap: \
-	run \
+	up \
 	migrate
-.PHONY: run
 
-run:
+up:
 	docker compose up -d --no-deps --remove-orphans
-.PHONY: run
 
 %-run: ## Start specific services.
 	docker-compose up -d $$(echo $* | tr + " ")
@@ -28,7 +26,7 @@ down:
 	docker-compose down -v
 
 build:
-	docker-compose build
+	docker-compose --profile $(TARGET_ENV) build
 
 logs:
 	docker-compose logs -f
@@ -63,6 +61,12 @@ app-logs:
 
 db-console:
 	docker-compose exec -it db psql -U postgres postgres
+
+app-test:
+	docker-compose run --rm app-test bash -c "poetry run pytest"
+
+app-lint:
+	docker-compose run --rm app-test bash -c "poetry run pylint backend"
 
 ps:
 	for i in $$(docker container ls --format "{{.ID}}"); do \

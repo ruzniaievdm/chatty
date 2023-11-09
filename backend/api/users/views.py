@@ -32,8 +32,10 @@ class CustomObtainAuthTokenView(ObtainAuthToken):
 
 
 class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
     @action(detail=False)
     def all(self, request):
-        serializer = UserSerializer(
-            User.objects.all(), many=True, context={"request": request})
+        serializer = self.get_serializer(self.queryset, many=True, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
