@@ -1,15 +1,15 @@
 .PHONY: ps
 
-run: \
-	up \
+bootstrap: \
+	run \
 	migrate
 .PHONY: run
 
-up:
+run:
 	docker compose up -d --no-deps --remove-orphans
-.PHONY: up
+.PHONY: run
 
-%-up: ## Start specific services.
+%-run: ## Start specific services.
 	docker-compose up -d $$(echo $* | tr + " ")
 
 load-fixtures:
@@ -63,12 +63,6 @@ app-logs:
 
 db-console:
 	docker-compose exec -it db psql -U postgres postgres
-
-nginx-shell:
-	docker-compose exec -it nginx sh
-
-app-install:
-	pip install -r backend/requirements.txt
 
 ps:
 	for i in $$(docker container ls --format "{{.ID}}"); do \

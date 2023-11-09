@@ -44,3 +44,4 @@ dist-ssr
 # python
  __pycache__/
  *.pyc
+ .python-version

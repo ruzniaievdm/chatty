@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "django-channels"
+version = "0.1.0"
+description = ""
+authors = ["ruzniaievdm <ruzniaievdm@gmail.com>"]
+packages = [{include = "backend"}]
+
+[tool.poetry.dependencies]
+python = "~3.11"
+django = "~4.0"
+daphne = "~3.0.2"
+channels-redis = "~4.1.0"
+django-cors-headers = "~3.14.0"
+gunicorn = "~21.2.0"
+django-environ = "~0.11.2"
+psycopg2-binary = "~2.9.8"
+djangorestframework = "^3.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.FORMAT]
+max-line-length = 120

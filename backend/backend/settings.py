@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # third-party
     'channels',
     'corsheaders',
+    'rest_framework',
     'rest_framework.authtoken',
     # personal
     'chat',
