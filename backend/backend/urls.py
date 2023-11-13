@@ -8,7 +8,7 @@ from rest_framework import routers
 from api import ConversationViewSet, UserViewSet, CustomObtainAuthTokenView
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet, basename='users')
+router.register('users', UserViewSet, basename='users')
 router.register('conversations', ConversationViewSet, basename='conversations')
 
 urlpatterns = [

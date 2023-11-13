@@ -27,7 +27,6 @@ export function Chat() {
     },
 
     onClose: (e) => {
-      console.log(e);
       console.log("Disconnected!");
     },
 
