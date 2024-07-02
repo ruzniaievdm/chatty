@@ -6,8 +6,9 @@ User = get_user_model()
 
 
 class Conversation(models.Model):
-    id = models.CharField(default=uuid.uuid4, editable=False,
-                          primary_key=True, max_length=36)
+    id = models.CharField(
+        default=uuid.uuid4, editable=False, primary_key=True, max_length=36
+    )
     name = models.CharField(max_length=128)
     online = models.ManyToManyField(to=User, blank=True)
 
@@ -31,8 +32,9 @@ class Conversation(models.Model):
 
 
 class Message(models.Model):
-    id = models.CharField(default=uuid.uuid4, editable=False,
-                          primary_key=True, max_length=36)
+    id = models.CharField(
+        default=uuid.uuid4, editable=False, primary_key=True, max_length=36
+    )
     conversation = models.ForeignKey(
         Conversation, on_delete=models.CASCADE, related_name="messages", default=""
     )

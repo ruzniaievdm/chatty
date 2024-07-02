@@ -4,7 +4,9 @@
 **/jest*
 **/dist
 **/build
-**/.env.production
+
+# Envs
+*.env
 
 # Logs
 logs

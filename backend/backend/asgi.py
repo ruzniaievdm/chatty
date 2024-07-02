@@ -17,9 +17,10 @@ from chat.routing import websocket_urlpatterns
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
-print('HERE settings', 'asgii')
 
-application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": TokenAuthMiddleware(URLRouter(websocket_urlpatterns)),
-})
+application = ProtocolTypeRouter(
+    {
+        "http": get_asgi_application(),
+        "websocket": TokenAuthMiddleware(URLRouter(websocket_urlpatterns)),
+    }
+)

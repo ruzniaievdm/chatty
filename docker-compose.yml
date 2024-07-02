@@ -52,41 +52,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  app-test:
-    image: app-test
-    build:
-      context: .
-      target: app-test
-    profiles:
-      - test
-    volumes:
-      - ./backend:/app/backend
-    depends_on:
-      - db
-
-  web-test:
-    image: web-test
-    build:
-      context: .
-      target: web-dev
-    profiles:
-      - test
-    volumes:
-      - ./frontend:/app/frontend
-      - node_modules:/app/frontend/node_modules
-
-  # nginx:
-  #   container_name: chat-nginx
-  #   build: ./backend/services/nginx
-  #   ports:
-  #     - 80:80
-  #   depends_on:
-  #     - app
-
 volumes:
   pgdata:
   redis_data:
   node_modules:
-# networks:
-#     chat-network:
-#         driver: bridge

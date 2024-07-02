@@ -3,7 +3,7 @@ name = "django-channels"
 version = "0.1.0"
 description = ""
 authors = ["ruzniaievdm <ruzniaievdm@gmail.com>"]
-packages = [{include = "backend"}]
+packages = [{ include = "backend" }]
 
 [tool.poetry.dependencies]
 python = "~3.11"
@@ -17,6 +17,8 @@ psycopg2-binary = "~2.9.8"
 djangorestframework = "^3.14.0"
 channels = "^3.0.4"
 redis = "^5.0.1"
+# django-eventstream = "^4.5.1"
+black = "^24.2.0"
 
 [tool.poetry.group.test]
 optional = true
@@ -36,7 +38,13 @@ python_files = "test_*.py"
 [tool.pylint.MASTER]
 ignore = "migrations"
 load-plugins = "pylint_django"
-fail-under=10.0
+fail-under = 10.0
 
-[tool.pylint.FORMAT]
-max-line-length = 120
+# [tool.pylint.FORMAT]
+# max-line-length = 120
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
