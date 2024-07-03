@@ -22,10 +22,9 @@ RUN poetry config virtualenvs.create false && poetry install --no-interaction --
 FROM app-builder as app-dev
 CMD python manage.py runserver 0.0.0.0:8000
 
+# App build test
 FROM app-builder as app-test
-
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root --only test
-
 
 # Web build
 FROM node:17-alpine AS web-builder

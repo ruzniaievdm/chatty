@@ -19,6 +19,7 @@ channels = "^3.0.4"
 redis = "^5.0.1"
 # django-eventstream = "^4.5.1"
 black = "^24.2.0"
+pytz = "^2024.1"
 
 [tool.poetry.group.test]
 optional = true

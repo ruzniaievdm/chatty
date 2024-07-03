@@ -52,6 +52,27 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  app-test:
+    image: app-test
+    container_name: chat-app-test
+    build:
+      context: .
+      target: app-test
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - db
+
+  web-test:
+    image: web-test
+    container_name: chat-web-test
+    build:
+      context: .
+      target: web-dev
+    volumes:
+      - ./frontend:/app/frontend
+      - node_modules:/app/frontend/node_modules
+
 volumes:
   pgdata:
   redis_data:

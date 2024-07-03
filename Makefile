@@ -13,8 +13,8 @@ up:
 
 load-fixtures:
 	docker compose run --rm app bash -c "./manage.py loaddata backend/fixtures/users.json \
-																														backend/fixtures/conversations.json \
-																														backend/fixtures/messages.json"
+															  backend/fixtures/conversations.json \
+															  backend/fixtures/messages.json"
 
 restart:
 	docker-compose restart
@@ -48,7 +48,7 @@ migrate:
 	docker compose run --rm app python manage.py migrate
 	
 app-shell:
-	docker-compose exec -it app bash
+	docker-compose exec app bash
 
 web-shell:
 	docker compose run --rm web sh
@@ -66,13 +66,10 @@ db-console:
 	docker-compose exec -it db psql -U postgres postgres
 
 app-test:
-	docker-compose run --rm app-test bash -c "poetry run pytest"
-
-app-lint:
-	docker-compose run --rm app-test bash -c "poetry run pylint backend"
+	docker-compose run --rm app-test bash -c "poetry run pytest && poetry run pylint backend"
 
 web-test:
-	docker-compose run --rm web-test sh -c "npm run test"
+	docker-compose run --rm web-test sh -c "CI=true npm run lint && npm run test -- --coverage"
 
 test: \
 	web-test \
