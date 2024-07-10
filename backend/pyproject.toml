@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-channels"
+name = "chatty"
 version = "0.1.0"
 description = ""
 authors = ["ruzniaievdm <ruzniaievdm@gmail.com>"]
@@ -17,9 +17,7 @@ psycopg2-binary = "~2.9.8"
 djangorestframework = "^3.14.0"
 channels = "^3.0.4"
 redis = "^5.0.1"
-# django-eventstream = "^4.5.1"
 black = "^24.2.0"
-pytz = "^2024.1"
 
 [tool.poetry.group.test]
 optional = true
@@ -28,6 +26,7 @@ optional = true
 pytest = "^7.4.3"
 pylint = "^3.0.2"
 pylint-django = "^2.5.5"
+ruff = "^0.5.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -41,11 +40,17 @@ ignore = "migrations"
 load-plugins = "pylint_django"
 fail-under = 10.0
 
-# [tool.pylint.FORMAT]
-# max-line-length = 120
+# Ruff
+[tool.ruff]
+line-length = 120
 
-[tool.black]
-line-length = 88
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+ignore = ["F401"]
+fixable = ["ALL"]
 
-[tool.isort]
-profile = "black"
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"

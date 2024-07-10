@@ -5,20 +5,31 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('chat', '0006_rename_uuid_conversation_id_rename_uuid_message_id'),
+        ("chat", "0006_rename_uuid_conversation_id_rename_uuid_message_id"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='conversation',
-            name='id',
-            field=models.CharField(default=uuid.uuid4, editable=False, max_length=36, primary_key=True, serialize=False),
+            model_name="conversation",
+            name="id",
+            field=models.CharField(
+                default=uuid.uuid4,
+                editable=False,
+                max_length=36,
+                primary_key=True,
+                serialize=False,
+            ),
         ),
         migrations.AlterField(
-            model_name='message',
-            name='id',
-            field=models.CharField(default=uuid.uuid4, editable=False, max_length=36, primary_key=True, serialize=False),
+            model_name="message",
+            name="id",
+            field=models.CharField(
+                default=uuid.uuid4,
+                editable=False,
+                max_length=36,
+                primary_key=True,
+                serialize=False,
+            ),
         ),
     ]

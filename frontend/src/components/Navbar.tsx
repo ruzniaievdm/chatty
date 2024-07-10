@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { WifiIcon } from '@heroicons/react/24/solid';
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -13,7 +12,7 @@ export function Navbar() {
         <div className="max-w-5xl mx-auto flex flex-wrap justify-between items-center">
           <Link to="/" className="flex items-center">
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Django/React Chat
+              Chatty
             </span>
           </Link>
           <div className="hidden w-full md:block md:w-auto">
@@ -29,14 +28,14 @@ export function Navbar() {
                   <>
                     <li>
                       <Link
-                        to="/conversations"
+                        to="/search"
                         className="block py-2 pr-4 pl-3 text-white md:p-0 dark:text-white"
                         aria-current="page"
                       >
-                        Active Conversations
+                        Search
                       </Link>
                     </li>
-                    <span className="text-white">Logged in: {user.username}</span>
+                    <b className="text-white">{user.username}</b>
                     <button className="block py-2 pr-4 pl-3 text-white md:p-0 dark:text-white" onClick={logout}>
                       Logout
                     </button>
@@ -45,12 +44,9 @@ export function Navbar() {
               }
             </ul>
           </div>
-          <WifiIcon className="h-6 w-6 text-blue-500" />
         </div>
       </nav>
-      <div className="max-w-5xl mx-auto py-6">
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 }

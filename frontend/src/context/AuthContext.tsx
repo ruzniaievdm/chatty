@@ -40,22 +40,25 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     navigate('/login');
   }
 
-  authAxios.interceptors.request.use((config) => {
-    config.headers = AuthHeader();
-    return config;
-  });
+  // authAxios.interceptors.request.use((config) => {
+  //   config.headers = AuthHeader();
+  //   return config;
+  // });
 
-  authAxios.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      if (error.response.status === 401) {
-        logout();
-      }
-      return Promise.reject(error);
-    }
-  );
+  // authAxios.interceptors.response.use(
+  //   (response) => {
+  //     return response;
+  //   },
+  //   (error) => {
+  //     console.log(error);
+  //     console.log(error.response);
+      
+  //     if (error?.response?.status === 401) {
+  //       logout();
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
 
   return (
     <AuthContext.Provider value={{ user, login, logout, authAxios }}>

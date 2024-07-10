@@ -7,62 +7,90 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
+        ("auth", "0012_alter_user_first_name_max_length"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('chat', '0003_migration_name'),
+        ("chat", "0003_migration_name"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Conversation',
+            name="Conversation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('uuid', models.UUIDField(default=uuid.uuid4, editable=False, unique=True)),
-                ('name', models.CharField(max_length=128)),
-                ('online', models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "uuid",
+                    models.UUIDField(default=uuid.uuid4, editable=False, unique=True),
+                ),
+                ("name", models.CharField(max_length=128)),
+                (
+                    "online",
+                    models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL),
+                ),
             ],
         ),
         migrations.RemoveField(
-            model_name='message',
-            name='channel',
+            model_name="message",
+            name="channel",
         ),
         migrations.RemoveField(
-            model_name='message',
-            name='sender',
+            model_name="message",
+            name="sender",
         ),
         migrations.AddField(
-            model_name='message',
-            name='from_user',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='messages_from_me', to='auth.user'),
+            model_name="message",
+            name="from_user",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="messages_from_me",
+                to="auth.user",
+            ),
         ),
         migrations.AddField(
-            model_name='message',
-            name='read',
+            model_name="message",
+            name="read",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='message',
-            name='to_user',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='messages_to_me', to='auth.user'),
+            model_name="message",
+            name="to_user",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="messages_to_me",
+                to="auth.user",
+            ),
         ),
         migrations.AddField(
-            model_name='message',
-            name='uuid',
+            model_name="message",
+            name="uuid",
             field=models.UUIDField(default=uuid.uuid4, editable=False, unique=True),
         ),
         migrations.AlterField(
-            model_name='message',
-            name='content',
+            model_name="message",
+            name="content",
             field=models.CharField(max_length=512),
         ),
         migrations.DeleteModel(
-            name='Channel',
+            name="Channel",
         ),
         migrations.AddField(
-            model_name='message',
-            name='conversation',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='messages', to='chat.conversation'),
+            model_name="message",
+            name="conversation",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="messages",
+                to="chat.conversation",
+            ),
         ),
     ]

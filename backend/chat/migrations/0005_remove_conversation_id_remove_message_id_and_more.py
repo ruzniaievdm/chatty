@@ -5,28 +5,31 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('chat', '0004_conversation_remove_message_channel_and_more'),
+        ("chat", "0004_conversation_remove_message_channel_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='conversation',
-            name='id',
+            model_name="conversation",
+            name="id",
         ),
         migrations.RemoveField(
-            model_name='message',
-            name='id',
+            model_name="message",
+            name="id",
         ),
         migrations.AlterField(
-            model_name='conversation',
-            name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+            model_name="conversation",
+            name="uuid",
+            field=models.UUIDField(
+                default=uuid.uuid4, editable=False, primary_key=True, serialize=False
+            ),
         ),
         migrations.AlterField(
-            model_name='message',
-            name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+            model_name="message",
+            name="uuid",
+            field=models.UUIDField(
+                default=uuid.uuid4, editable=False, primary_key=True, serialize=False
+            ),
         ),
     ]

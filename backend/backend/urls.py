@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from api import ConversationViewSet, UserViewSet, CustomObtainAuthTokenView
+from api import ConversationViewSet, CustomObtainAuthTokenView, UserViewSet
 
 router = routers.DefaultRouter()
 router.register("users", UserViewSet, basename="users")

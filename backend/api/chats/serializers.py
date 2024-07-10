@@ -15,13 +15,13 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = (
-            'id',
-            'conversation',
-            'from_user',
-            'to_user',
-            'content',
-            'timestamp',
-            'read',
+            "id",
+            "conversation",
+            "from_user",
+            "to_user",
+            "content",
+            "timestamp",
+            "read",
         )
 
     def get_conversation(self, obj):
@@ -40,10 +40,10 @@ class ConversationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Conversation
-        fields = ('id', 'name', 'other_user', 'last_message')
+        fields = ("id", "name", "other_user", "last_message")
 
     def get_last_message(self, obj):
-        messages = obj.messages.all().order_by('timestamp')
+        messages = obj.messages.all().order_by("timestamp")
 
         if not messages.exists():
             return None
@@ -52,10 +52,10 @@ class ConversationSerializer(serializers.ModelSerializer):
         return MessageSerializer(message).data
 
     def get_other_user(self, obj):
-        usernames = obj.name.split('__')
+        usernames = obj.name.split("__")
         context = {}
         for username in usernames:
-            if username != self.context['user'].username:
+            if username != self.context["user"].username:
                 # TODO: user does not exists
                 other_user = User.objects.get(username=username)
                 return UserSerializer(other_user, context=context).data

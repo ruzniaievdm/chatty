@@ -4,15 +4,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('chat', '0002_alter_message_unique_together'),
+        ("chat", "0002_alter_message_unique_together"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='Message',
-            old_name='created_at',
-            new_name='timestamp',
+            model_name="Message",
+            old_name="created_at",
+            new_name="timestamp",
         ),
     ]

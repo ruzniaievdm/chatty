@@ -33,16 +33,20 @@ export function Conversations() {
 
   return (
     <div>
-      {users
-        .filter((u: UserModel) => u.username !== user?.username)
-        .map((u: UserModel) => (
-          <Link
-            to={`chat/${createConversationName(user.username, u.username)}`}
-            key={u.username}
-          >
-            <div key={u.username}>{u.username}</div>
-          </Link>
-        ))}
+      <ul role="list">
+        {users
+          .filter((u: UserModel) => u.username !== user?.username)
+          .map((u: UserModel) => (
+            <Link
+              to={`/chat/${createConversationName(user.username, u.username)}`}
+              key={u.username}
+            >
+              <li class="group/item hover:bg-slate-100">
+                <p>{u.username}</p>
+              </li>
+            </Link>
+          ))}
+      </ul>
     </div>
   );
 }

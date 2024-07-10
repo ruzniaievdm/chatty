@@ -6,21 +6,30 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('chat', '0007_alter_conversation_id_alter_message_id'),
+        ("chat", "0007_alter_conversation_id_alter_message_id"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='message',
-            name='from_user',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='messages_from_me', to=settings.AUTH_USER_MODEL),
+            model_name="message",
+            name="from_user",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="messages_from_me",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='message',
-            name='to_user',
-            field=models.ForeignKey(default='', on_delete=django.db.models.deletion.CASCADE, related_name='messages_to_me', to=settings.AUTH_USER_MODEL),
+            model_name="message",
+            name="to_user",
+            field=models.ForeignKey(
+                default="",
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="messages_to_me",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

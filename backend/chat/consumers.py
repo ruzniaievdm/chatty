@@ -73,8 +73,6 @@ class ChatConsumer(JsonWebsocketConsumer):
     def receive_json(self, content, **kwargs):
         message_type = content["type"]
 
-        # send_event('user-list', 'message', {'text': 'hello world'})
-
         if message_type == "chat_message":
             message = Message.objects.create(
                 from_user=self.user,

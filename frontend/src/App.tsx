@@ -1,7 +1,7 @@
 import { AuthContextProvider } from "./context/AuthContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Chat } from "./components/Chat";
+import { Chat } from "./components/chat";
 import { Login } from "./components/Login";
 import { Navbar } from "./components/Navbar";
 import { Conversations } from "./components/Conversations";
@@ -23,13 +23,17 @@ export default function App() {
         >
           <Route path="" element={
             <ProtectedRoute>
-              <Conversations />
+              <ActiveConversations />
             </ProtectedRoute>
           } />
-          <Route path="chat/:conversationName" element={<Chat />} />
-          <Route path="conversations/" element={
+          <Route path="chat/:conversationName" element={
             <ProtectedRoute>
-              <ActiveConversations />
+              <Chat />
+            </ProtectedRoute>
+          } />
+          <Route path="search/" element={
+            <ProtectedRoute>
+              <Conversations />
             </ProtectedRoute>
           } />
           <Route path="login" element={<Login />} />

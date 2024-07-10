@@ -1,2 +1,2 @@
+from .users.views import CustomObtainAuthTokenView, UserViewSet
 from .chats.views import ConversationViewSet
-from .users.views import UserViewSet, CustomObtainAuthTokenView

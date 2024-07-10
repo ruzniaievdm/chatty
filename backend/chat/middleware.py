@@ -1,8 +1,9 @@
-from django.contrib.auth.models import AnonymousUser
+from urllib.parse import parse_qs
+
 from channels.db import database_sync_to_async
 from channels.middleware import BaseMiddleware
+from django.contrib.auth.models import AnonymousUser
 from rest_framework.authtoken.models import Token
-from urllib.parse import parse_qs
 
 
 @database_sync_to_async
@@ -28,5 +29,7 @@ class TokenAuthMiddleware(BaseMiddleware):
     async def __call__(self, scope, receive, send):
         query_params = parse_qs(scope["query_string"].decode())
         token_key = query_params["token"][0]
-        scope['user'] = AnonymousUser() if token_key is None else await get_user(token_key)
+        scope["user"] = (
+            AnonymousUser() if token_key is None else await get_user(token_key)
+        )
         return await super().__call__(scope, receive, send)

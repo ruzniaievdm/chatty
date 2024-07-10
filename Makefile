@@ -48,7 +48,7 @@ migrate:
 	docker compose run --rm app python manage.py migrate
 	
 app-shell:
-	docker-compose exec app bash
+	docker compose run --rm app bash
 
 web-shell:
 	docker compose run --rm web sh
@@ -66,14 +66,22 @@ db-console:
 	docker-compose exec -it db psql -U postgres postgres
 
 app-test:
-	docker-compose run --rm app-test bash -c "poetry run pytest && poetry run pylint backend"
+	docker-compose run --rm app-test bash -c "poetry run pytest"
+
+app-lint:
+	docker-compose run --rm app-test bash -c "poetry run ruff check"
 
 web-test:
-	docker-compose run --rm web-test sh -c "CI=true npm run lint && npm run test -- --coverage"
+	docker-compose run --rm web-test sh -c "npm run test -- --coverage"
 
-test: \
+web-lint:
+	docker-compose run --rm web-test sh -c "CI=true npm run lint"
+
+quality: \
 	web-test \
-	app-test
+	app-test \
+	web-lint \
+	app-lint
 
 ps:
 	for i in $$(docker container ls --format "{{.ID}}"); do \
